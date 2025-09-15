@@ -6,16 +6,30 @@ The experiment tested whether moving the first “gate” from level 30 → 40 i
 ---
 
 ## 📊 Project Overview
-- **Goal**: Test impact of gate placement on player retention  
-- **Groups**:  
-  - Group A → Gate at level 30 (Control)  
-  - Group B → Gate at level 40 (Treatment)  
-- **Primary metric**: Day-7 retention  
-- **Guardrail metric**: Day-1 retention  
-- **Statistical tests**:  
-  - Two-proportion z-test  
-  - Wilson confidence intervals  
-  - Absolute & relative lift  
+
+- **Goal:** Evaluate the impact of gate placement on player retention  
+- **Groups:**  
+  - **Group A (Control):** gate at level 30  
+  - **Group B (Treatment):** gate at level 40  
+- **Primary metric:** Day-7 retention (long-term engagement)  
+- **Guardrail metric:** Day-1 retention (onboarding health)  
+- **Statistical methods:**  
+  - Two-proportion **z-test** (for differences in proportions)  
+  - **Wilson 95% Confidence Intervals** (better than Wald method)  
+  - **Absolute & relative lift** (effect sizes)  
+  - **MDE / Sample size estimation** (statistical power)  
+- **Stack:** Python · pandas · statsmodels · matplotlib  
+
+---
+
+## ✨ Key Learnings
+
+This project demonstrates how to run and interpret an A/B test like a data scientist:  
+- Designing experiments with **primary** vs **guardrail** metrics  
+- Running a **two-proportion z-test** to compare groups  
+- Computing **confidence intervals** for retention rates  
+- Interpreting **absolute & relative lift**  
+- Using results to make a **ship / don’t ship decision**  
 
 ---
 
@@ -33,58 +47,68 @@ pip install -r requirements.txt
 Download dataset from Kaggle:
 👉 Cookie Cats Dataset
 
-Place the file in the /data folder:
+Place the file into /data:
 
-bash
+arduino
 Copy code
 data/
-  ├── README.md
-  └── cookie_cats.csv   # <- place here
-4. Run analysis
+├── README.md         # explains dataset source
+└── cookie_cats.csv   # downloaded from Kaggle
+4. Run the analysis
 Open Jupyter Notebook:
 
 bash
 Copy code
 jupyter notebook notebooks/analysis.ipynb
-📈 Results Summary
+Figures will be saved automatically to results/figures/.
+
+📈 Results
 Metric	A (Gate 30)	B (Gate 40)	Abs lift (pp)	Rel lift (%)	p-value	Interpretation
-Day-1 retention	44.82%	44.23%	–0.59	–1.32%	0.0744	No significant change
-Day-7 retention ⭐	19.02%	18.20%	–0.82	–4.31%	0.0016	Significant drop
+Day-1 retention (guardrail)	44.82%	44.23%	–0.59	–1.32%	0.0744	Not statistically significant
+Day-7 retention (primary)	19.02%	18.20%	–0.82	–4.31%	0.0016	Significant drop
 
-📌 Decision: ❌ Do not move the gate. Day-7 retention significantly worsens.
+Decision: ❌ Do not ship the change. Moving the gate to level 40 harms long-term retention.
 
-📊 Visuals
-Day-1 retention
-
-
-Day-7 retention
+🖼️ Visuals
+Day-1 Retention (Guardrail)
 
 
-🎓 Concepts Demonstrated
-Experiment design (primary vs guardrail metrics)
+Day-7 Retention (Primary)
 
-Two-proportion z-test for A/B testing
 
-Wilson confidence intervals
+🧠 Concepts Covered
+Experiment design: Choosing meaningful metrics
 
-Absolute & relative lift interpretation
+Statistical testing: Two-proportion z-test
 
-Practical decision-making (ship / don’t ship)
+Confidence intervals: Wilson method for retention rates
 
-📄 License
-This project is licensed under the MIT License – see the LICENSE file for details.
+Effect size: Absolute vs relative lift
 
-yaml
+Business decision-making: Translating results into product strategy
+
+🗂️ Project Structure
+bash
 Copy code
+cookiecats-ab-test/
+├── data/
+│   └── README.md            # dataset source (Kaggle)
+├── notebooks/
+│   └── analysis.ipynb       # full analysis notebook
+├── results/
+│   └── figures/             # generated plots
+├── src/
+│   ├── metrics.py           # z-test, Wilson CI, MDE helpers
+│   └── viz.py               # visualization utilities
+├── requirements.txt         # Python dependencies
+├── LICENSE
+└── README.md
+📚 Data & License
+Dataset: Cookie Cats A/B Test on Kaggle
 
-4. Save the file (**Cmd+S** / **Ctrl+S**).  
+Code License: MIT License – see LICENSE
 
----
+👤 Author
+Prerna Shinde
+🔗 GitHub: PrernaShinde
 
-### 🌀 Push it to GitHub
-Back in your terminal (inside the repo folder):
-
-```bash
-git add README.md
-git commit -m "Improve README structure with overview, results, visuals"
-git push origin main
