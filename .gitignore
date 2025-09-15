@@ -1,0 +1,26 @@
+# python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.eggs/
+
+# notebooks
+.ipynb_checkpoints/
+
+# environments
+.env
+.venv/
+venv/
+
+# OS/editor
+.DS_Store
+
+# data & outputs (keep big/raw out of git)
+data/*
+!data/README.md
+
+results/*
+!results/figures/
+results/figures/*.png
+data/*.csv
