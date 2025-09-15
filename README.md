@@ -39,10 +39,14 @@ This project demonstrates how to run and interpret an A/B test like a data scien
 ```bash
 git clone https://github.com/PrernaShinde/cookiecats-ab-test.git
 cd cookiecats-ab-test
+
+
 2. Install dependencies
 bash
 Copy code
 pip install -r requirements.txt
+
+
 3. Data setup
 Download dataset from Kaggle:
 👉 Cookie Cats Dataset
@@ -54,6 +58,8 @@ Copy code
 data/
 ├── README.md         # explains dataset source
 └── cookie_cats.csv   # downloaded from Kaggle
+
+
 4. Run the analysis
 Open Jupyter Notebook:
 
