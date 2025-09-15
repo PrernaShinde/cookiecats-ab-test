@@ -38,6 +38,5 @@ This project demonstrates how to run and interpret an A/B test like a data scien
 git clone https://github.com/PrernaShinde/cookiecats-ab-test.git
 cd cookiecats-ab-test
 
-### 2. Install dependencies
-```bash
+2. Install dependencies
 pip install -r requirements.txt
